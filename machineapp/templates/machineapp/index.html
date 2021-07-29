@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <button onclick="run()">실행</button>
+
+    <div id="dataResult"></div>
+
+</body>
+
+<script>
+    function run(){
+          const xhttp = new XMLHttpRequest();
+          xhttp.onload = function() {
+          let result = JSON.parse(this.responseText);
+            document.getElementById("dataResult").innerHTML = result.msg;
+            }
+          xhttp.open("GET", "{% url 'machineapp:scrap' %}", true);
+          xhttp.send();
+    }
+</script>
+</html>
